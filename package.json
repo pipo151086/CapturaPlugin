@@ -1,0 +1,14 @@
+{
+  "name": "captura_plugin",
+  "version": "0.0.1",
+  "description": "",
+  "cordova": {
+    "id": "captura_plugin",
+    "platforms": []
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "",
+  "license": "ISC"
+}
