@@ -9,7 +9,7 @@ repositories{
 
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.zy.bm.biomatchone.android"
+        applicationId "com.qapaq.banking"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
