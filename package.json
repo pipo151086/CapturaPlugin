@@ -1,9 +1,9 @@
 {
   "name": "captura_plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "cordova": {
-    "id": "captura_plugin",
+    "id": "captura_facial_plugin",
     "platforms": []
   },
   "keywords": [

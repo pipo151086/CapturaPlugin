@@ -101,7 +101,6 @@ public class CapturaPlugin extends CordovaPlugin {
                     objeto.put("idSolicitud", zyResponse.getBmoIdSolicitud()+ "");
                     objeto.put("bioScore", zyResponse.getBioScore()+ "");
                     objeto.put("bioIdTransaccion", zyResponse.getBioIdTransaccion()+ "");
-                    objeto.put("EstSolicitud", zyResponse.getBmoEstSolicitud()+ "");
 
                 } catch (JSONException e) {
                     Log.d(LOG_TAG, "This should never happen");
