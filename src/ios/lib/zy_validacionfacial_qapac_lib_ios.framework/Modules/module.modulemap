@@ -1,0 +1,11 @@
+framework module zy_validacionfacial_qapac_lib_ios {
+  umbrella header "zy_validacionfacial_qapac_lib_ios-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module zy_validacionfacial_qapac_lib_ios.Swift {
+    header "zy_validacionfacial_qapac_lib_ios-Swift.h"
+    requires objc
+}

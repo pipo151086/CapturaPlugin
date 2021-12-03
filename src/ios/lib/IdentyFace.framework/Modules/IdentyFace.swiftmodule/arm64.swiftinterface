@@ -1,0 +1,524 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3.2 effective-4.1.50 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 4 -enforce-exclusivity=checked -O -module-name IdentyFace
+import AVFoundation
+import AVKit
+import Accelerate
+import CommonCrypto
+import CoreData
+import CoreGraphics
+import CoreML
+import CoreMotion
+import Foundation
+@_exported import IdentyFace
+import ImageIO
+import MobileCoreServices
+import Photos
+import QuartzCore
+import Security
+import Swift
+import SystemConfiguration
+import UIKit
+import WebKit
+import os.log
+import os
+public enum IdentyError : Swift.Error {
+  case NETWORK_ERROR
+  case JAILBROKEN_DEVICE_ERROR
+  case LICENSE_ERROR
+  case ACTIVITY_PAUSED
+  case ACTIVITY_PAUSED_ON_BACK_PRESSED
+  case TRANSACTION_TIMEOUT
+  case TRANSACTION_LIMIT_EXCEEDED
+  case INITIALIZATION_FAILED
+  case TEMPLATE_GENERATION_FAILED
+  case NIST_GENERATION_FAILED
+  case NO_FACE_DETECTED
+  case INVAILD_INPUT
+  case UNABLE_TO_RETRIVE_TEMPLATE
+  case UNABLE_TO_CONVERT_IMAGEFORMAT
+  case NO_FILE_FOUND
+  case INVALID_TRANSACTION_TIME
+  case INVALID_TRANSACTION_COUNT
+  public static func == (a: IdentyFace.IdentyError, b: IdentyFace.IdentyError) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+extension IdentyError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public protocol FaceMatcher {
+  func validate() -> Swift.Bool
+}
+public class FaceLocalMatcher : IdentyFace.FaceMatcher {
+  public var isLocal: Swift.Bool!
+  public init(_ isLocal: Swift.Bool)
+  public func validate() -> Swift.Bool
+  @objc deinit
+}
+public func + (left: CoreGraphics.CGPoint, right: CoreGraphics.CGPoint) -> CoreGraphics.CGPoint
+public func - (left: CoreGraphics.CGPoint, right: CoreGraphics.CGPoint) -> CoreGraphics.CGPoint
+public func -= (left: inout CoreGraphics.CGPoint, right: CoreGraphics.CGPoint)
+public func += (left: inout CoreGraphics.CGPoint, right: CoreGraphics.CGPoint)
+public func + (left: CoreGraphics.CGPoint, right: CoreGraphics.CGSize) -> CoreGraphics.CGPoint
+public func + (left: CoreGraphics.CGSize, right: CoreGraphics.CGPoint) -> CoreGraphics.CGSize
+public func - (left: CoreGraphics.CGPoint, right: CoreGraphics.CGSize) -> CoreGraphics.CGPoint
+public func - (left: CoreGraphics.CGSize, right: CoreGraphics.CGPoint) -> CoreGraphics.CGSize
+public func * (left: CoreGraphics.CGFloat, right: CoreGraphics.CGPoint) -> CoreGraphics.CGPoint
+public func * (left: CoreGraphics.CGPoint, right: CoreGraphics.CGFloat) -> CoreGraphics.CGPoint
+public func / (left: CoreGraphics.CGPoint, right: CoreGraphics.CGFloat) -> CoreGraphics.CGPoint
+public func * (left: CoreGraphics.CGFloat, right: CoreGraphics.CGSize) -> CoreGraphics.CGSize
+public func * (left: CoreGraphics.CGSize, right: CoreGraphics.CGFloat) -> CoreGraphics.CGSize
+public func / (left: CoreGraphics.CGSize, right: CoreGraphics.CGFloat) -> CoreGraphics.CGSize
+public class IdentyFaceCustomEncryption {
+  public var encrypt: ((Foundation.NSData?) -> Foundation.NSData)?
+  public var decrypt: ((Foundation.NSData?) -> Foundation.NSData)?
+  public init()
+  @objc deinit
+}
+public class IdentyCustomUI {
+  public var addCustomView: ((UIKit.UIView, CoreGraphics.CGRect, Swift.Int) -> Swift.Void)?
+  public var addHeaderView: ((UIKit.UIView, UIKit.UIViewController) -> Swift.Void)?
+  public var onUpdateHeaderStatus: ((Swift.String?) -> Swift.Void)?
+  public var onUpdateProgressStatus: ((Swift.Double, Swift.String?, Swift.Bool) -> Swift.Void)?
+  public init()
+  @objc deinit
+}
+public class IdentyUserManager {
+  public class var getInstance: IdentyFace.IdentyUserManager {
+    get
+  }
+  public init()
+  public func getUsers() -> [IdentyFace.IdentyUser?]
+  public func createUser(_ user: IdentyFace.IdentyUser?, completionhandler: @escaping (IdentyFace.IdentyResponse?) -> Swift.Void)
+  public func deleteUser(_ user: IdentyFace.IdentyUser?, completionhandler: @escaping (IdentyFace.IdentyResponse?) -> Swift.Void)
+  public func updateUser(_ existingUser: IdentyFace.IdentyUser?, _ updateToUser: IdentyFace.IdentyUser?, completionhandler: @escaping (IdentyFace.IdentyResponse?) -> Swift.Void)
+  @objc deinit
+}
+public class IdentyResponse {
+  @objc public init()
+  public var responseDictionary: Swift.Dictionary<Swift.String, Any>?
+  @objc deinit
+}
+public enum InterpreterError : Swift.Error, Swift.Equatable, Swift.Hashable {
+  case invalidTensorIndex(index: Swift.Int, maxIndex: Swift.Int)
+  case invalidTensorDataCount(provided: Swift.Int, required: Swift.Int)
+  case invalidTensorDataType
+  case failedToLoadModel
+  case failedToCreateInterpreter
+  case failedToResizeInputTensor(index: Swift.Int)
+  case failedToCopyDataToInputTensor
+  case failedToAllocateTensors
+  case allocateTensorsRequired
+  case invokeInterpreterRequired
+  case tensorFlowLiteError(Swift.String)
+  public static func == (a: IdentyFace.InterpreterError, b: IdentyFace.InterpreterError) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+extension InterpreterError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+extension InterpreterError : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+public class IdentySingleton {
+  public init()
+  @objc deinit
+}
+public class ResponseModel {
+  public init()
+  @objc deinit
+}
+extension UIInterfaceOrientation {
+  public var videoOrientation: AVFoundation.AVCaptureVideoOrientation {
+    get
+  }
+}
+@objc public enum RecordPosition : Swift.Int {
+  case UNKNOWN = 0
+  case RIGHT_THUMB = 1
+  case RIGHT_INDEX_FINGER
+  case RIGHT_MIDDLE_FINGER
+  case RIGHT_RING_FINGER
+  case RIGHT_LITTLE_FINGER
+  case LEFT_THUMB
+  case LEFT_INDEX_FINGER
+  case LEFT_MIDDLE_FINGER
+  case LEFT_RING_FINGER
+  case LEFT_LITTLE_FINGER
+  case FACE
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum RecordType : Swift.Int {
+  case TYPE_1 = 1
+  case TYPE_2
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum Type_1 : Swift.Int {
+  case TYPE1_RECORD_HEADER = 1
+  case VERSION_NUMBER
+  case TYPE_OF_TRANSACTION = 4
+  case DATE
+  case DESTINATION_AGENCY_ID = 7
+  case ORIGINATING_AGENCY_ID
+  case TRANSACTION_CONTROL_NUM
+  case NATIVE_SCAN_RESOLUTION = 11
+  case NOMINAL_TRANSMIT_RESOLUTION
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum Type_2 : Swift.Int {
+  case TYPE2_RECORD_HEADER = 1
+  case IMAGE_DESIGNATION_CHARCTER
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class CreateNIST {
+  @objc public init()
+  public func addRecord1Field(recordId: IdentyFace.RecordType, fieldID: IdentyFace.Type_1, val: Swift.String?)
+  public func addRecord2Field(recordId: IdentyFace.RecordType, fieldID: IdentyFace.Type_2, val: Swift.String?)
+  public func addFingerPrint(fileData: Foundation.NSData?, fingerPosition: IdentyFace.RecordPosition)
+  public func addMinutiae(fileData: Foundation.NSData?, fingerPosition: IdentyFace.RecordPosition)
+  public func addFace(fileData: Foundation.NSData?, fingerPosition: IdentyFace.RecordPosition, width: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat)
+  public func createNIST(licensePath: Swift.String?, licenseData: Foundation.Data?, viewcontrol: UIKit.UIViewController, filePath: Swift.String?, onSuccess success: @escaping (IdentyFace.IdentyResponse?) -> Swift.Void, onFailure failure: @escaping (IdentyFace.IdentyError?) -> Swift.Void)
+  @objc deinit
+}
+@objc(IdentyFaceFramework) public class IdentyFaceFramework : ObjectiveC.NSObject {
+  @objc public var isAntiSpoofCheck: Swift.Bool
+  public var imageStandard: IdentyFace.ImageStandard
+  @objc public var plainSolidColor: UIKit.UIColor!
+  @objc public var boxes_transparent: UIKit.UIColor!
+  @objc public var boxes_transparent_innerborder: UIKit.UIColor!
+  @objc public var textBackgroundColor: UIKit.UIColor!
+  @objc public var startColor: UIKit.UIColor!
+  @objc public var middleColor: UIKit.UIColor!
+  @objc public var endColor: UIKit.UIColor!
+  @objc public var setBase64EncodingFlag: Swift.Int
+  @objc public var isDemo: Swift.Bool
+  @objc public var isAssistedMode: Swift.Bool
+  @objc public var isNeedShowTraining: Swift.Bool
+  @objc public var SetASSecLevel: IdentyFace.antispoofFaceThreshold
+  @objc public var introScreenStartColor: UIKit.UIColor!
+  @objc public var introScreenMiddleColor: UIKit.UIColor!
+  @objc public var introScreenEndColor: UIKit.UIColor!
+  public var templates: [IdentyFace.FaceAppTemplateFormat]
+  @objc public var displayResult: Swift.Bool
+  @objc public var encryptionKey: Swift.String?
+  @objc public var customQualityViewController: UIKit.UIViewController!
+  @objc public var customResultViewController: UIKit.UIViewController!
+  @objc public var customIntroViewController: UIKit.UIViewController!
+  @objc public var isCustomQualityScreen: Swift.Bool
+  @objc public var isCustomResultScreen: Swift.Bool
+  @objc public var isCustomIntroScreen: Swift.Bool
+  @objc public var moveToCamera: (() -> Swift.Void)?
+  @objc public var moveBack: (() -> Swift.Void)?
+  @objc public var closeAction: (() -> Swift.Void)?
+  @objc public var retakeAction: (() -> Swift.Void)?
+  @objc public var captureResult: (() -> Swift.String)?
+  @objc public var isInitialize: Swift.Bool
+  @objc public var isLogEnabled: Swift.Bool
+  @objc public var backImage: UIKit.UIImage?
+  @objc public var isLicenseCheck: Swift.Bool
+  public typealias Identy_UserManager = IdentyFace.IdentyUserManager
+  public typealias Identy_User = IdentyFace.IdentyUser
+  public var timeout: Swift.Double?
+  public var attempts: Swift.UInt?
+  public var txnPath: Swift.String?
+  public var uiSelect: IdentyFace.FaceAppUI
+  public var small_logo: UIKit.UIImage?
+  public var failCase_gradientColor: UIKit.UIColor?
+  public var successCase_gradientColor: UIKit.UIColor?
+  public var ovalDotColor: UIKit.UIColor?
+  public var processing_ovalDotColor: UIKit.UIColor?
+  @objc public func getLicenseExpiryDate() -> Foundation.Date?
+  @objc public init(with licensePath: Swift.String?, localizablePath: Swift.String?, table: Swift.String?)
+  public init(with licenseData: Foundation.Data?, localizablePath: Swift.String?, table: Swift.String?)
+  public func SetMatchSecLevel(level: IdentyFace.faceMatchingThreshold)
+  public func setCustomUI(_ customUI: IdentyFace.IdentyCustomUI?)
+  public func pause() -> Swift.Bool
+  public func resume() -> Swift.Bool
+  @objc public func createLogFile(fileName: Swift.String, _ isLog: Swift.Bool)
+  public func customEncryption(customEncrypt: IdentyFace.IdentyFaceCustomEncryption?)
+  public func enroll(viewcontrol: UIKit.UIViewController?, user: IdentyFace.IdentyUser?, faceMatcher: IdentyFace.FaceMatcher, onSuccess success: @escaping (IdentyFace.IdentyResponse?, [Swift.String]?, Swift.Int) -> Swift.Void, onFailure failure: @escaping (IdentyFace.IdentyError?, [Swift.String]?, Swift.Int) -> Swift.Void, onAttempts attempts: @escaping ([IdentyFace.Attempt]?) -> Swift.Void)
+  public func enroll(viewcontrol: UIKit.UIViewController?, faceMatcher: IdentyFace.FaceMatcher, onSuccess success: @escaping (IdentyFace.IdentyResponse?, [Swift.String]?, Swift.Int) -> Swift.Void, onFailure failure: @escaping (IdentyFace.IdentyError?, [Swift.String]?, Swift.Int) -> Swift.Void, onAttempts attempts: @escaping ([IdentyFace.Attempt]?) -> Swift.Void)
+  public func verify(viewcontrol: UIKit.UIViewController?, user: IdentyFace.IdentyUser?, faceMatcher: IdentyFace.FaceMatcher, onSuccess success: @escaping (IdentyFace.IdentyResponse?, [Swift.String]?, Swift.Int) -> Swift.Void, onFailure failure: @escaping (IdentyFace.IdentyError?, [Swift.String]?, Swift.Int) -> Swift.Void, onAttempts attempts: @escaping ([IdentyFace.Attempt]?) -> Swift.Void)
+  public func verify(viewcontrol: UIKit.UIViewController?, faceMatcher: IdentyFace.FaceMatcher, onSuccess success: @escaping (IdentyFace.IdentyResponse?, [Swift.String]?, Swift.Int) -> Swift.Void, onFailure failure: @escaping (IdentyFace.IdentyError?, [Swift.String]?, Swift.Int) -> Swift.Void, onAttempts attempts: @escaping ([IdentyFace.Attempt]?) -> Swift.Void)
+  public func capture(viewcontrol: UIKit.UIViewController?, onSuccess success: @escaping (IdentyFace.IdentyResponse?, [Swift.String]?, Swift.Int) -> Swift.Void, onFailure failure: @escaping (IdentyFace.IdentyError?, [Swift.String]?, Swift.Int) -> Swift.Void, onAttempts attempts: @escaping ([IdentyFace.Attempt]?) -> Swift.Void)
+  public func verifyWithTemplate(viewcontrol: UIKit.UIViewController?, faceMatch: IdentyFace.FaceMatcher, templateType: IdentyFace.FaceAppTemplateFormat, data: Foundation.Data, onSuccess success: @escaping (IdentyFace.IdentyResponse?, [Swift.String]?, Swift.Int) -> Swift.Void, onFailure failure: @escaping (IdentyFace.IdentyError?, [Swift.String]?, Swift.Int) -> Swift.Void, onAttempts attempts: @escaping ([IdentyFace.Attempt]?) -> Swift.Void)
+  public func verifyWithPictureID(viewcontrol: UIKit.UIViewController?, faceMatcher: IdentyFace.FaceMatcher, imageData: Foundation.Data, onSuccess success: @escaping (IdentyFace.IdentyResponse?, [Swift.String]?, Swift.Int) -> Swift.Void, onFailure failure: @escaping (IdentyFace.IdentyError?, [Swift.String]?, Swift.Int) -> Swift.Void, onAttempts attempts: @escaping ([IdentyFace.Attempt]?) -> Swift.Void)
+  public func matchWithTemplate(viewcontrol: UIKit.UIViewController, faceMatch: IdentyFace.FaceMatcher, probeTemplateType: IdentyFace.FaceAppTemplateFormat, probeTemplate: Foundation.Data, candidateTemplateType: IdentyFace.FaceAppTemplateFormat, candidateTemplate: Foundation.Data, onSuccess success: @escaping (IdentyFace.IdentyResponse?, [Swift.String]?, Swift.Int) -> Swift.Void, onFailure failure: @escaping (IdentyFace.IdentyError?, [Swift.String]?, Swift.Int) -> Swift.Void, onAttempts attempts: @escaping ([IdentyFace.Attempt]?) -> Swift.Void)
+  public func matchWithPictureID(viewcontrol: UIKit.UIViewController, faceMatcher: IdentyFace.FaceMatcher, selfieTemplateType: IdentyFace.FaceAppTemplateFormat, selfieData: Foundation.Data, pictureIDTemplateType: IdentyFace.FaceAppTemplateFormat, pictureIDData: Foundation.Data, onSuccess success: @escaping (IdentyFace.IdentyResponse?, [Swift.String]?, Swift.Int) -> Swift.Void, onFailure failure: @escaping (IdentyFace.IdentyError?, [Swift.String]?, Swift.Int) -> Swift.Void, onAttempts attempts: @escaping ([IdentyFace.Attempt]?) -> Swift.Void)
+  @objc(setTemplates:) public func setTemplates(templates: Swift.Array<Swift.Int>)
+  @objc deinit
+  @objc override dynamic public init()
+}
+public struct FaceKeys {
+  public static let isNeedShowTraining: Swift.String
+  public static let isFirstTime: Swift.String
+  public static let isAntiSpoof: Swift.String
+  public static let isAssistedMode: Swift.String
+  public static let verificationCount: Swift.String
+  public init()
+}
+@objc public enum Oval : Swift.Int {
+  case roundedRect
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum FaceAppUI {
+  case normal
+  case tickingUI
+  case roundedRect
+  public var faceAppUIName: Swift.String {
+    get
+  }
+  public static func == (a: IdentyFace.FaceAppUI, b: IdentyFace.FaceAppUI) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum FaceAppMode : Swift.Int {
+  case demo
+  case commercial
+  public var faceAppModeName: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum facebase64encoding : Swift.Int {
+  case Default
+  case NO_CLOSE
+  case NO_PADDING
+  case NO_WRAP
+  case URL_SAFE
+  public var base64Value: Swift.Int {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum FaceAppTemplateFormat : Swift.Int {
+  case png
+  case iso
+  case nist
+  public var faceAppTemplateFormatName: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum ImageStandard {
+  case icar
+  case face
+  public static func == (a: IdentyFace.ImageStandard, b: IdentyFace.ImageStandard) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+@objc public enum antispoofFaceThreshold : Swift.Int {
+  case LOW = 1
+  case MEDIUM
+  case HIGH
+  case VERY_HIGH
+  case NONE
+  public var antispoofValue: Swift.Double {
+    get
+  }
+  public var fusionThresholdValue: Swift.Double {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum faceMatchingThreshold : Swift.Int {
+  case LOW
+  case HIGH
+  case VERYHIGH
+  public var matchingValue: Swift.Double {
+    get
+  }
+  public var cardMatchingValue: Swift.Double {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum FaceScanType : Swift.Int {
+  case none
+  case face
+  public var faceScanTypeString: Swift.String {
+    get
+  }
+  public var toString: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum FaceScanResult : Swift.Int {
+  case successEnroll
+  case verifySuccess
+  case verifyFailure
+  case captureSuccess
+  case none
+  public var resultString: Swift.String {
+    get
+  }
+  public var resultColor: UIKit.UIColor {
+    get
+  }
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class Attempt {
+  public init(score: CoreGraphics.CGFloat, qScore: Swift.Int, numOfFrames: Swift.Int, numOfPassedFrames: Swift.Int, spoofScore: CoreGraphics.CGFloat, asL1Score: CoreGraphics.CGFloat, asL3EyeScore: CoreGraphics.CGFloat, asL3NoseScore: CoreGraphics.CGFloat, captureTime: Swift.Double, processingTime: Swift.Double, matchingTime: Swift.Double, isAuthSuccess: Swift.Bool)
+  public func getScore() -> CoreGraphics.CGFloat
+  public func getSpoofScore() -> CoreGraphics.CGFloat
+  public func getqScore() -> Swift.Int
+  public func getasL1Score() -> CoreGraphics.CGFloat
+  public func getasL3EyeScore() -> CoreGraphics.CGFloat
+  public func getasL3NoseScore() -> CoreGraphics.CGFloat
+  public func getCaptureTime() -> Swift.Double
+  public func getProcessingTime() -> Swift.Double
+  public func getMatchingTime() -> Swift.Double
+  public func getIsAuthSuccess() -> Swift.Bool
+  @objc deinit
+}
+public class OS_Logger {
+  public init()
+  public enum OS_Type : Swift.Int {
+    case debug, error, info, defaultType
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum OS_Category : Swift.Int {
+    case app, ui, network, database
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum AccessLevel : Swift.Int {
+    case publicAccess, privateAccess
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  open func log(category: IdentyFace.OS_Logger.OS_Category, message: Swift.String, access: IdentyFace.OS_Logger.AccessLevel, type: IdentyFace.OS_Logger.OS_Type)
+  @objc deinit
+}
+public class IdentyUser {
+  public var userName: Swift.String!
+  public var userID: Swift.String!
+  public init(name: Swift.String)
+  @objc deinit
+}
+extension IdentyFace.IdentyError : Swift.Equatable {}
+extension IdentyFace.IdentyError : Swift.Hashable {}
+extension IdentyFace.RecordPosition : Swift.Equatable {}
+extension IdentyFace.RecordPosition : Swift.Hashable {}
+extension IdentyFace.RecordPosition : Swift.RawRepresentable {}
+extension IdentyFace.RecordType : Swift.Equatable {}
+extension IdentyFace.RecordType : Swift.Hashable {}
+extension IdentyFace.RecordType : Swift.RawRepresentable {}
+extension IdentyFace.Type_1 : Swift.Equatable {}
+extension IdentyFace.Type_1 : Swift.Hashable {}
+extension IdentyFace.Type_1 : Swift.RawRepresentable {}
+extension IdentyFace.Type_2 : Swift.Equatable {}
+extension IdentyFace.Type_2 : Swift.Hashable {}
+extension IdentyFace.Type_2 : Swift.RawRepresentable {}
+extension IdentyFace.Oval : Swift.Equatable {}
+extension IdentyFace.Oval : Swift.Hashable {}
+extension IdentyFace.Oval : Swift.RawRepresentable {}
+extension IdentyFace.FaceAppUI : Swift.Equatable {}
+extension IdentyFace.FaceAppUI : Swift.Hashable {}
+extension IdentyFace.FaceAppMode : Swift.Equatable {}
+extension IdentyFace.FaceAppMode : Swift.Hashable {}
+extension IdentyFace.FaceAppMode : Swift.RawRepresentable {}
+extension IdentyFace.facebase64encoding : Swift.Equatable {}
+extension IdentyFace.facebase64encoding : Swift.Hashable {}
+extension IdentyFace.facebase64encoding : Swift.RawRepresentable {}
+extension IdentyFace.FaceAppTemplateFormat : Swift.Equatable {}
+extension IdentyFace.FaceAppTemplateFormat : Swift.Hashable {}
+extension IdentyFace.FaceAppTemplateFormat : Swift.RawRepresentable {}
+extension IdentyFace.ImageStandard : Swift.Equatable {}
+extension IdentyFace.ImageStandard : Swift.Hashable {}
+extension IdentyFace.antispoofFaceThreshold : Swift.Equatable {}
+extension IdentyFace.antispoofFaceThreshold : Swift.Hashable {}
+extension IdentyFace.antispoofFaceThreshold : Swift.RawRepresentable {}
+extension IdentyFace.faceMatchingThreshold : Swift.Equatable {}
+extension IdentyFace.faceMatchingThreshold : Swift.Hashable {}
+extension IdentyFace.faceMatchingThreshold : Swift.RawRepresentable {}
+extension IdentyFace.FaceScanType : Swift.Equatable {}
+extension IdentyFace.FaceScanType : Swift.Hashable {}
+extension IdentyFace.FaceScanType : Swift.RawRepresentable {}
+extension IdentyFace.FaceScanResult : Swift.Equatable {}
+extension IdentyFace.FaceScanResult : Swift.Hashable {}
+extension IdentyFace.FaceScanResult : Swift.RawRepresentable {}
+extension IdentyFace.OS_Logger.OS_Type : Swift.Equatable {}
+extension IdentyFace.OS_Logger.OS_Type : Swift.Hashable {}
+extension IdentyFace.OS_Logger.OS_Type : Swift.RawRepresentable {}
+extension IdentyFace.OS_Logger.OS_Category : Swift.Equatable {}
+extension IdentyFace.OS_Logger.OS_Category : Swift.Hashable {}
+extension IdentyFace.OS_Logger.OS_Category : Swift.RawRepresentable {}
+extension IdentyFace.OS_Logger.AccessLevel : Swift.Equatable {}
+extension IdentyFace.OS_Logger.AccessLevel : Swift.Hashable {}
+extension IdentyFace.OS_Logger.AccessLevel : Swift.RawRepresentable {}

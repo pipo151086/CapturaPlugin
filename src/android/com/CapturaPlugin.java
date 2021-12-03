@@ -12,10 +12,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import zy.qapac.facial.lib.android.api.IZyApiCapturaFacial;
-import zy.qapac.facial.lib.android.api.ZyApiCapturaFacial;
-import zy.qapac.facial.lib.android.api.ZyRequest;
-import zy.qapac.facial.lib.android.api.ZyResponse;
+import com.zy.qapaq.facial.lib.android.sdk.api.IZyApiCapturaFacial;
+import com.zy.qapaq.facial.lib.android.sdk.api.ZyApiCapturaFacial;
+import com.zy.qapaq.facial.lib.android.sdk.api.ZyRequest;
+import com.zy.qapaq.facial.lib.android.sdk.api.ZyResponse;
 
 /**
  * This class echoes a string called from JavaScript.

@@ -25,7 +25,7 @@
   }
 
     exports.coolMethod = function (arg0, success, error) {
-        exec(success, error, 'CapturaPlugin', 'coolMethod', [arg0]);
+        exec(success, error, 'CapturaPlugin', 'captura', [arg0]);
     };
 
 
