@@ -48,6 +48,7 @@
 		<lib-file src="src/android/zy-qapac-facial-lib-android_release_2.0.0.aar"/>
 		<lib-file src="src/android/face-3.5.0.aar"/>
 	</platform>
+	<!-- iOS -->
 	<platform name="ios">
 		<config-file parent="/*" target="config.xml">
 			<feature name="CapturaPlugin">
@@ -63,7 +64,10 @@
 		<framework src="src/ios/lib/IdentyFace.framework" custom="true" embed="true"/>
 		<framework src="src/ios/lib/zy_validacionfacial_qapac_lib_ios.framework" custom="true" embed="true"/>
 		<framework src="src/ios/lib/Alamofire.framework" custom="true" embed="true"/>
+		<framework src="src/ios/lib/JWTDecode.framework" custom="true" embed="true"/>
+		<framework src="src/ios/lib/CryptoSwift.framework" custom="true" embed="true"/>
 		<source-file src="src/ios/lib/zy_licence_facial.lic" target-dir="ios"/>
+		<!-- Add in the swift-support plugin by default -->
 		<dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
 	</platform>
 </plugin>

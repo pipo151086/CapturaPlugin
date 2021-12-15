@@ -11,7 +11,8 @@ class ZyTPluginBioWU : CDVPlugin {
         let idSolicitud = inputs[2] as! String
         let nuOperacionEmpresa = inputs[3] as! String
         let token = inputs[4] as! String
-        
+        let isDialog = inputs[5] as! Bool
+
         let  valBio = ZyApiCapturaFacial(onView: self.viewController)
         
         var zyrequest = ZyValidacionRequest()
@@ -20,6 +21,7 @@ class ZyTPluginBioWU : CDVPlugin {
         zyrequest.nuOperacionEmps = nuOperacionEmpresa
         zyrequest.idSolicitud = idSolicitud
         zyrequest.token = token
+        
         
         valBio.validacionFacialQ(request: zyrequest)
         {
