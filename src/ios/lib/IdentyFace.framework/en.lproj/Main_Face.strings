@@ -85,7 +85,6 @@
 "identy_enable_internet_message" = "Please enable Internet";
 "identy_initialization_failed" = "Initialization Failed";
 "identy_jailbroken_device" = "Device is Jailbroken";
-"identy_no_lic_file" = "License error";
 "identy_activity_paused" = "Activity paused";
 "identy_back_pressed" = "Activity paused on clicking back";
 "identy_timeout" = "Transaction Timeout";
@@ -94,6 +93,7 @@
 "identy_templategenration_failed" = "Failed to generate Template";
 "identy_invalid_input" = "Invalid input";
 "id_unable_to_retrieve_template" = "Unable to retrieve Template";
+"id_unable_to_retrieve_file" = "Unable to retrieve File";
 "id_unable_to_convert_imageformat" = "Unable to convert to Image Format";
 "id_file_not_found" = "File not found";
 "id_encryption_failed" = "Encryption Failed";
@@ -105,6 +105,7 @@
 "id_authentication_unsuccessful" = "Verification Failed";
 "id_capture_successful" = "Capture Completed";
 "identy_score" = "Score";
+"id_something_is_weird_error" =  "Something is Weird";
 
 /*CameraViewController*/
 "id_badlighting" = "Avoid shadows";
@@ -161,3 +162,15 @@
 "id_timeout" = "Timed Out";
 "id_unsuccessful_recognition" =  "Unsuccessful Recognition";
 "id_ok" = "Ok";
+
+//FaceViewController
+"id_eyes_closed" = "Closed";
+"id_eyes_open" =  "Open";
+"id_eyes_not_visible" = "Not Visible";
+"id_eyes_visible" = "Visible";
+
+//Errors
+"id_license_not_exist" = "Unable to find license";
+"id_license_empty" = "License is empty";
+"id_validation_failed" = "License validation failed";
+"id_license_not_connect" = "Unable to connect to License server";
