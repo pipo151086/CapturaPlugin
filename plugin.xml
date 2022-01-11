@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='utf-8'?>
-<plugin id="captura_facial_plugin" version="7.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+ <?xml version='1.0' encoding='utf-8'?>
+<plugin id="captura_facial_plugin" version="0.0.2" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
 	<name>CapturaPlugin</name>
 	<license>MIT</license>
   <engines>
@@ -20,7 +20,6 @@
 		</config-file>
 
 		<config-file parent="/*" target="AndroidManifest.xml"/>
-		 
 		<framework src="src/android/captura_facial.gradle" custom="true" type="gradleReference"/>
 		<framework src="androidx.appcompat:appcompat:1.1.0"/>   
 		<framework src="com.google.android.material:material:1.1.0"/>   
@@ -50,8 +49,8 @@
 		<framework src="com.android.volley:volley:1.1.0"/>   
 		<framework src="com.google.android.gms:play-services-safetynet:17.0.0"/>   
 		
+        <lib-file src="src/android/zy-qapac-facial-lib-android_release_2.0.0.aar"/>
 		<lib-file src="src/android/zyFaceLib_release_1.2.0.aar"/>
-		<lib-file src="src/android/zy-qapac-facial-lib-android_release_2.0.0.aar"/>
 		<lib-file src="src/android/face-3.5.0.aar"/>
 				
 	</platform>

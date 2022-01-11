@@ -13,29 +13,9 @@ repositories{
             storeFile file('../app/src/main/firmaApp/ztmobile.jks')
             storePassword 'zytrust00'
         }
-        release {
-            keyAlias 'ztmobile'
-            keyPassword 'zytrust00'
-            storeFile file('../app/src/main/firmaApp/ztmobile.jks')
-            storePassword 'zytrust00'
-        }
+
     }
 
-    compileSdkVersion 29
-    defaultConfig {
-        applicationId "com.qapaq.banking"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "7.1"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
 	 packagingOptions {
         pickFirst '**/*.so'
 
@@ -94,8 +74,8 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2'
 
     implementation files('libs\\zy-qapac-facial-lib-android_release_2.0.0.aar')
-    implementation files('libs\\face-3.5.0.aar')
     implementation files('libs\\zyFaceLib_release_1.2.0.aar')
+    implementation files('libs\\face-3.5.0.aar')
 
     implementation 'com.google.android.gms:play-services-safetynet:17.0.0'
     implementation 'com.android.volley:volley:1.2.0'
