@@ -27,7 +27,7 @@ repositories{
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "7.1"
+        versionName "6.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
