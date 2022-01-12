@@ -103,7 +103,8 @@ dependencies {
     /*********************ENCRYPTACION SERVICIO**********************/
     implementation 'commons-codec:commons-codec:1.10'
     implementation 'com.auth0.android:jwtdecode:2.0.0'
-
+    
+    implementation 'com.github.chrisbanes.photoview:library:1.2.4'
 }
 
  
