@@ -1,7 +1,7 @@
 repositories{
     google()
     mavenCentral()
-    jcenter()
+    //jcenter()
     flatDir{
         dirs 'libs'
     }
@@ -99,7 +99,7 @@ dependencies {
     implementation files('libs\\face-3.5.0.aar')
     implementation files('libs\\zyFaceLib_release_1.2.0.aar')
 
-    implementation 'com.google.android.gms:play-services-safetynet:17.0.0'
+    //implementation 'com.google.android.gms:play-services-safetynet:17.0.0'
     implementation 'com.android.volley:volley:1.2.0'
 
     /*********************ENCRYPTACION SERVICIO**********************/
